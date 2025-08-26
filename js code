@@ -1,0 +1,21 @@
+const chatBox = document.getElementById("chat-box");
+const input = document.getElementById("user-input");
+const sendBtn = document.getElementById("send-btn");
+
+sendBtn.addEventListener("click", () => {
+    const userMsg = input.value;
+    if (!userMsg) return;
+
+    // Mostrar mensaje del usuario
+    chatBox.innerHTML += `<div><strong>Tú:</strong> ${userMsg}</div>`;
+
+    // Respuesta del bot (puedes agregar más lógica luego)
+    let botMsg = "🤔 No entendí tu mensaje, estoy aprendiendo...";
+    if(userMsg.toLowerCase().includes("hola")) botMsg = "¡Hola! 😀";
+    if(userMsg.toLowerCase().includes("hora")) botMsg = new Date().toLocaleTimeString();
+
+    chatBox.innerHTML += `<div><strong>Minibot:</strong> ${botMsg}</div>`;
+    input.value = "";
+    chatBox.scrollTop = chatBox.scrollHeight; // Mantener scroll abajo
+});
+
